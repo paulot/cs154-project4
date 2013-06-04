@@ -1,9 +1,7 @@
 typedef struct {
   int *stateTable; //contains small state machine for each entry
-  int *predictTable;
   int accesses;
   int mispredictions;
-  //int branchSize;
   int bitSize;
 } Branch;
 
