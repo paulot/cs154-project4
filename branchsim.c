@@ -44,13 +44,13 @@ void updateBranchPredictor(void *bp, int PC, int result) {
   
   if (result == 0) { // if result is not taken
   	switch (b->stateTable[index]) {
-  		case 0: // predict not taken
+      case 0: // predict not taken
         b->stateTable[index] = 0;
         break;
-  		case 1: // predict not taken 
+      case 1: // predict not taken 
         b->stateTable[index] = 0;
         break;
-  	  case 3:
+      case 3:
         b->stateTable[index] = 2;
         b->mispredictions++;
         break;
