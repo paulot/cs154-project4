@@ -10,7 +10,10 @@ int NumberOfSetBits(int i) {
 void *createAndInitialize(int numEntries) {
   Branch *b = (Branch *) malloc(sizeof(Branch));
   b->stateTable  = (int *) malloc(numEntries * sizeof(int));
-  
+ 
+  b->accesses = 0;
+  b->mispredictions = 0;
+
   b->bitSize = NumberOfSetBits(numEntries - 1);
   int i = 0;
   for (i; i < numEntries; i++) {
@@ -78,11 +81,11 @@ void updateBranchPredictor(void *bp, int PC, int result) {
 }
 
 int numAccesses(void *bp) {
-  return ((Branch *) bp)->accesses + 1;
+  return ((Branch *) bp)->accesses;
 }
 
 int numMispredictions(void *bp) {
-  return ((Branch *) bp)->mispredictions + 1;
+  return ((Branch *) bp)->mispredictions;
 }
 
 
